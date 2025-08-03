@@ -1,0 +1,111 @@
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+      - 386
+    ignore:
+      - goos: windows
+        goarch: arm64
+      - goos: linux
+        goarch: arm64
+    binary: lazytrack
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE*
+      - CHANGELOG*
+    ignore:
+      - /\.git/
+      - /\.github/
+
+brews:
+  - name: lazytrack
+    description: "A fun CLI-based time/habit tracker"
+    repository:
+      name: master-wayne7/homebrew-tap
+      branch: main
+    commit_author:
+      name: "GitHub Actions"
+      email: "actions@github.com"
+    folder: Formula
+    homepage: "https://github.com/master-wayne7/lazytrack"
+    test: |
+      system "#{bin}/lazytrack", "--help"
+    install: |
+      bin.install "lazytrack"
+    dependencies:
+      - go
+
+chocolateys:
+  - name: lazytrack
+    title: "LazyTrack"
+    authors: "master-wayne7"
+    project_url: "https://github.com/master-wayne7/lazytrack"
+    license_url: "https://github.com/master-wayne7/lazytrack/blob/main/LICENSE"
+    require_license_acceptance: false
+    project_source_url: "https://github.com/master-wayne7/lazytrack"
+    docs_url: "https://github.com/master-wayne7/lazytrack#readme"
+    bug_tracker_url: "https://github.com/master-wayne7/lazytrack/issues"
+    tags: "lazytrack cli habit tracker productivity golang"
+    summary: "A fun CLI-based time/habit tracker"
+    release_notes: "https://github.com/master-wayne7/lazytrack/releases"
+    icon_url: "https://raw.githubusercontent.com/master-wayne7/lazytrack/main/assets/icon.png"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - Merge pull request
+      - Merge branch
+
+dockers:
+  - image_templates:
+      - "ghcr.io/master-wayne7/lazytrack:{{ .Version }}"
+      - "ghcr.io/master-wayne7/lazytrack:latest"
+    dockerfile: Dockerfile
+    use: buildx
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--platform=linux/arm64"
+    extra_files:
+      - README.md
+      - LICENSE
+
+release:
+  name_template: '{{ .ProjectName }} {{ .Version }}'
+  draft: false
+  prerelease: false
+
+dist: dist 

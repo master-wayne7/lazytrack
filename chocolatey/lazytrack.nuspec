@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>lazytrack</id>
+    <version>0.0.0</version>
+    <title>LazyTrack</title>
+    <authors>master-wayne7</authors>
+    <projectUrl>https://github.com/master-wayne7/lazytrack</projectUrl>
+    <licenseUrl>https://github.com/master-wayne7/lazytrack/blob/main/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/master-wayne7/lazytrack</projectSourceUrl>
+    <docsUrl>https://github.com/master-wayne7/lazytrack#readme</docsUrl>
+    <bugTrackerUrl>https://github.com/master-wayne7/lazytrack/issues</bugTrackerUrl>
+    <tags>lazytrack cli habit tracker productivity golang</tags>
+    <summary>A fun CLI-based time/habit tracker</summary>
+    <releaseNotes>https://github.com/master-wayne7/lazytrack/releases</releaseNotes>
+    <description>
+      LazyTrack is a fun, visually appealing, and feature-rich CLI-based time/habit tracker written in Go. 
+      Perfect for developers, students, and anyone who loves the command line!
+      
+      Features:
+      - Simple habit logging with time or count tracking
+      - Beautiful ASCII-based summaries with bar charts
+      - Custom emoji icons for each habit
+      - Goal tracking and progress monitoring
+      - Automatic late reminders after 8 PM
+      - Cross-platform notifications
+      - Local SQLite storage
+    </description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package> 
