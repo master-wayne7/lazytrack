@@ -35,8 +35,6 @@ archives:
         format: zip
     files:
       - README.md
-      - LICENSE*
-      - CHANGELOG*
 
 brews:
   - name: lazytrack
@@ -47,7 +45,6 @@ brews:
     commit_author:
       name: "GitHub Actions"
       email: "actions@github.com"
-    folder: Formula
     homepage: "https://github.com/master-wayne7/lazytrack"
     test: |
       system "#{bin}/lazytrack", "--help"
@@ -55,21 +52,6 @@ brews:
       bin.install "lazytrack"
     dependencies:
       - go
-
-chocolateys:
-  - name: lazytrack
-    title: "LazyTrack"
-    authors: "master-wayne7"
-    project_url: "https://github.com/master-wayne7/lazytrack"
-    license_url: "https://github.com/master-wayne7/lazytrack/blob/main/LICENSE"
-    require_license_acceptance: false
-    project_source_url: "https://github.com/master-wayne7/lazytrack"
-    docs_url: "https://github.com/master-wayne7/lazytrack#readme"
-    bug_tracker_url: "https://github.com/master-wayne7/lazytrack/issues"
-    tags: "lazytrack cli habit tracker productivity golang"
-    summary: "A fun CLI-based time/habit tracker"
-    release_notes: "https://github.com/master-wayne7/lazytrack/releases"
-    icon_url: "https://raw.githubusercontent.com/master-wayne7/lazytrack/main/assets/icon.png"
 
 checksum:
   name_template: "checksums.txt"
@@ -98,7 +80,6 @@ dockers:
       - "--platform=linux/arm64"
     extra_files:
       - README.md
-      - LICENSE
 
 release:
   name_template: "{{ .ProjectName }} {{ .Version }}"
