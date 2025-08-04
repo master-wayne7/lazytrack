@@ -2,6 +2,22 @@
 
 A fun, visually appealing, and feature-rich **CLI-based time/habit tracker** written in Go. Perfect for developers, students, and anyone who loves the command line!
 
+![LazyTrack Demo](assets/demo.gif)
+
+## 📊 Screenshots
+
+### Demo
+![Demo](assets/image.png)
+
+### Weekly Summary
+![Weekly Summary](assets/weekly-summary.png)
+
+### Daily Summary  
+![Daily Summary](assets/daily-summary.png)
+
+### Configuration
+![Configuration](assets/config.png)
+
 ## ✨ Features
 
 - **🎯 Simple Habit Logging**: Log habits with time or count tracking
@@ -10,7 +26,7 @@ A fun, visually appealing, and feature-rich **CLI-based time/habit tracker** wri
 - **🎯 Goal Tracking**: Set daily goals and track progress
 - **⚙️ Easy Configuration**: Interactive setup and customization
 - **🔥 Streak Tracking**: Monitor your consistency
-- **💾 Local Storage**: SQLite database for data persistence
+- **💾 Local Storage**: JSON-based data storage for data persistence
 - **🌙 Automatic Late Reminders**: Get notified after 8 PM for pending goals
 
 ## 🚀 Quick Start
@@ -22,7 +38,7 @@ A fun, visually appealing, and feature-rich **CLI-based time/habit tracker** wri
 **Homebrew (macOS/Linux):**
 ```bash
 # Add the tap
-brew tap master-wayne7/tap
+brew tap master-wayne7/homebrew-tap
 
 # Install LazyTrack
 brew install lazytrack
@@ -39,16 +55,15 @@ choco install lazytrack
 **Windows:**
 ```powershell
 # Download the latest release
-Invoke-WebRequest -Uri "https://github.com/master-wayne7/lazytrack/releases/latest/download/lazytrack-windows-amd64.exe" -OutFile "lazytrack.exe"
-
-# Add to PATH (optional)
-Copy-Item lazytrack.exe C:\Windows\System32\
+Invoke-WebRequest -Uri "https://github.com/master-wayne7/lazytrack/releases/latest/download/lazytrack_Windows_x86_64.zip" -OutFile "lazytrack.zip"
+Expand-Archive lazytrack.zip -DestinationPath .
 ```
 
 **macOS:**
 ```bash
 # Download the latest release
-curl -L -o lazytrack "https://github.com/master-wayne7/lazytrack/releases/latest/download/lazytrack-macos-amd64"
+curl -L -o lazytrack "https://github.com/master-wayne7/lazytrack/releases/latest/download/lazytrack_Darwin_x86_64.tar.gz"
+tar -xzf lazytrack_Darwin_x86_64.tar.gz
 chmod +x lazytrack
 
 # Add to PATH (optional)
@@ -58,14 +73,15 @@ sudo cp lazytrack /usr/local/bin/
 **Linux:**
 ```bash
 # Download the latest release
-curl -L -o lazytrack "https://github.com/master-wayne7/lazytrack/releases/latest/download/lazytrack-linux-amd64"
+curl -L -o lazytrack "https://github.com/master-wayne7/lazytrack/releases/latest/download/lazytrack_Linux_x86_64.tar.gz"
+tar -xzf lazytrack_Linux_x86_64.tar.gz
 chmod +x lazytrack
 
 # Add to PATH (optional)
 sudo cp lazytrack /usr/local/bin/
 ```
 
-#### Option 2: Build from Source
+#### Option 3: Build from Source
 
 1. **Clone the repository**:
    ```bash
@@ -256,8 +272,9 @@ Set daily goals for any habit:
 
 ### Data Storage
 
-- **SQLite Database**: Stored in `~/.lazytrack.db`
-- **Automatic Setup**: Creates tables on first run
+- **JSON Files**: Stored in `~/.lazytrack/` (macOS/Linux) or `%USERPROFILE%\.lazytrack\` (Windows)
+- **Files**: `habits.json`, `logs.json`, `config.json`
+- **Automatic Setup**: Creates files on first run
 - **Cross-platform**: Works on Windows, macOS, and Linux
 
 ## 🛠️ Development
