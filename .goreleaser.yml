@@ -53,40 +53,6 @@ brews:
     dependencies:
       - go
 
-chocolateys:
-  - name: lazytrack
-    title: LazyTrack
-    authors: master-wayne7
-    project_url: https://github.com/master-wayne7/lazytrack
-    license_url: https://github.com/master-wayne7/lazytrack/blob/main/LICENSE
-    require_license_acceptance: false
-    project_source_url: https://github.com/master-wayne7/lazytrack
-    docs_url: https://github.com/master-wayne7/lazytrack#readme
-    bug_tracker_url: https://github.com/master-wayne7/lazytrack/issues
-    tags: lazytrack cli habit tracker productivity golang
-    summary: A fun CLI-based time/habit tracker
-    release_notes: https://github.com/master-wayne7/lazytrack/releases
-    description: |
-      LazyTrack is a fun, visually appealing, and feature-rich CLI-based time/habit tracker written in Go. 
-      Perfect for developers, students, and anyone who loves the command line!
-
-      Features:
-      - Simple habit logging with time or count tracking
-      - Beautiful ASCII-based summaries with bar charts
-      - Custom emoji icons for each habit
-      - Goal tracking and progress monitoring
-      - Automatic late reminders after 8 PM
-      - Cross-platform notifications
-      - Local SQLite storage
-    repository:
-      name: master-wayne7/chocolatey-packages
-      branch: main
-    commit_author:
-      name: "GitHub Actions"
-      email: "actions@github.com"
-    commit_msg_template: "chore: update {{ .ProjectName }} to {{ .Version }} [skip ci]"
-    nuspec_template: chocolatey/lazytrack.nuspec
-
 checksum:
   name_template: "checksums.txt"
 
