@@ -40,7 +40,8 @@ brews:
   - name: lazytrack
     description: "A fun CLI-based time/habit tracker"
     repository:
-      name: master-wayne7/homebrew-tap
+      owner: master-wayne7
+      name: homebrew-tap
       branch: main
     commit_author:
       name: "GitHub Actions"
